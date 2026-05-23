@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AeroMod Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header>
+    <h1>🛡️ AeroMod</h1>
+    <p>Smart Moderator Assistant · Live Simulation</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- COMMUNITY STATUS -->
+    <div class="panel">
+      <h3>Community Status</h3>
+      <div id="status" class="status green">NORMAL</div>
+    </div>
+
+    <!-- ACTIVITY -->
+    <div class="panel">
+      <h3>Post Activity</h3>
+      <p>Posts/min: <span id="posts">0</span></p>
+      <p>Toxicity: <span id="toxicity">Low</span></p>
+      <p>Flagged: <span id="flagged">0</span></p>
+    </div>
+
+    <!-- ALERT -->
+    <div class="panel">
+      <h3>Moderation Alert</h3>
+      <div id="alert">System Stable</div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
