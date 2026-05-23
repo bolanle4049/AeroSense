@@ -1,0 +1,31 @@
+body {
+  font-family: Arial;
+  background: #0c0f1a;
+  color: white;
+  text-align: center;
+}
+
+.app {
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.panel {
+  background: #1a1f2e;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.status {
+  font-size: 24px;
+  padding: 10px;
+}
+
+.green { color: #00ff99; }
+.yellow { color: #ffd000; }
+.red { color: #ff4d4d; }
