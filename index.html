@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyCabin Control Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header>
+    <div class="header-left">
+      <div class="header-icon">✈️</div>
+      <div>
+        <div class="header-title">AeroSense</div>
+        <div class="header-sub">Intelligent Cabin Control System · v1.0</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="flight-info">System Mode: Live Simulation · Altitude: 35,000 ft
+      <div class="live-dot" title="Live"></div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- MODE PANEL -->
+    <div class="panel">
+      <div class="panel-head">
+        <span class="panel-label">Mode Status</span>
+        <span class="chip green" id="modeChip">Day</span>
+      </div>
+      <div class="panel-body">
+        <div class="mode-display green" id="modeDisplay">Day Mode</div>
+        <div class="mode-btns">
+          <button class="mode-btn active-day" id="btn-day" onclick="setMode('DAY')">Day</button>
+          <button class="mode-btn" id="btn-night" onclick="setMode('NIGHT')">Night</button>
+          <button class="mode-btn" id="btn-sleep" onclick="setMode('SLEEP')">Sleep</button>
+          <button class="mode-btn emergency" id="btn-emergency" onclick="setMode('EMERGENCY')">⚠ Emergency</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SENSOR PANEL -->
+    <div class="panel">
+      <div class="panel-head">
+        <span class="panel-label">Sensor Status</span>
+        <span class="chip green" id="sensorChip">All Clear</span>
+      </div>
+      <div class="panel-body">
+        <div class="sensor-row">
+          <div class="sensor-icon">💡</div>
+          <span class="sensor-name">Light Level</span>
+          <span class="sensor-val ok" id="light">Normal</span>
+        </div>
+        <div class="sensor-row">
+          <div class="sensor-icon">🚶</div>
+          <span class="sensor-name">Motion</span>
+          <span class="sensor-val dim" id="motion">No activity</span>
+        </div>
+        <div class="sensor-row">
+          <div class="sensor-icon">🚻</div>
+          <span class="sensor-name">Lavatory</span>
+          <span class="sensor-val ok" id="lavatory">Vacant</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHTING PANEL -->
+    <div class="panel">
+      <div class="panel-head">
+        <span class="panel-label">Cabin Lighting</span>
+        <span class="intensity-badge" id="intensityBadge">80%</span>
+      </div>
+      <div class="panel-body">
+        <div class="light-preview" id="cabinLight"></div>
+        <div class="slider-wrap">
+          <span class="slider-icon">🌑</span>
+          <input type="range" min="0" max="100" value="80" step="1" id="brightnessSlider" aria-label="Cabin light intensity">
+          <span class="slider-icon">☀️</span>
+          <span class="slider-val" id="brightnessValue">80%</span>
+        </div>
+        <div class="presets">
+          <button class="preset-btn" onclick="setLight(15)">Dim · 15%</button>
+          <button class="preset-btn" onclick="setLight(50)">Mid · 50%</button>
+          <button class="preset-btn" onclick="setLight(80)">Day · 80%</button>
+          <button class="preset-btn" onclick="setLight(100)">Full · 100%</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALERT PANEL -->
+    <div class="panel">
+      <div class="panel-head">
+        <span class="panel-label">Cockpit Alerts</span>
+      </div>
+      <div class="panel-body">
+        <div class="alert-bar ok" id="alertBar">
+          <div class="alert-icon" id="alertIcon">✅</div>
+          <div>
+            <div class="alert-title ok" id="alertTitle">System Normal</div>
+            <div class="alert-sub" id="alertSub">All subsystems operating within parameters</div>
+          </div>
+        </div>
+        <div class="ts" id="alertTs">Last checked: just now</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
