@@ -199,3 +199,38 @@ socket.on("sensorData", (data) => {
     lavatoryState      = "VACANT";
   }
 });
+// SIMULATED SENSOR DATA (for GitHub Pages demo)
+setInterval(() => {
+  const fakeLight = Math.floor(Math.random() * 100);
+  const fakeMotion = Math.random() > 0.5 ? "1" : "0";
+
+  const data = `LIGHT:${fakeLight},MOTION:${fakeMotion}`;
+
+  // manually trigger your existing logic
+  const event = { data };
+
+  let light = fakeLight;
+  let motion = fakeMotion;
+
+  document.getElementById("light").innerText = light;
+
+  const motionDetected = motion === "1";
+
+  const motionEl = document.getElementById("motion");
+  const lav = document.getElementById("lavatory");
+  const chip = document.getElementById("sensorChip");
+
+  if (motionDetected) {
+    motionEl.innerText = "PASSENGER DETECTED";
+    lav.innerText = "Occupied";
+    lav.className = "sensor-val warn";
+    chip.textContent = "Lavatory In Use";
+    chip.className = "chip yellow";
+  } else {
+    motionEl.innerText = "NO ACTIVITY";
+    lav.innerText = "Vacant";
+    lav.className = "sensor-val ok";
+    chip.textContent = "All Clear";
+    chip.className = "chip green";
+  }
+}, 2000);
