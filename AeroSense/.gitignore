@@ -1,7 +1,0 @@
-node_modules/
-.env
-dist/
-build/
-node_modules/
-AeroSense-server/
-server.js
